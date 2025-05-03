@@ -7,10 +7,14 @@ export const config = {
     URI: process.env.DB_URI,
   },
   server: {
-    PUERTO: process.env.PUERTO
+    PUERTO: process.env.PORT
   },
   JWT: {
     secret: process.env.JWT_SECRET,
     expires: process.env.JWT_EXPIRES
+  },
+  email: {
+    user: process.env.USER_EMAIL,
+    pass: process.env.USER_PASS
   }
 };

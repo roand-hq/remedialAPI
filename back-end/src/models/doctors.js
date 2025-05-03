@@ -24,11 +24,7 @@ const doctorSchema = new Schema(
       type: String,
       require: true,
       minlength: [8, "La contraseña debe tener mínimo 8 caracteres"],
-    },
-    verified: {
-      type: Boolean,
-      require: true,
-    },
+    }
   },
   {
     timestamps: true,
