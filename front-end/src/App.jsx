@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router";
+import { Register } from "./pages/Register";
+import { List } from "./pages/List";
+import "./App.css";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [doctors, setDoctors] = useState([]);
+  const fetchDoctors = async () => {
+    try {
+      const response = await fetch("http://localhost:4000/zacamil/doctors"); // Asegúrate de usar await aquí
+      if (!response.ok) throw new Error("Network response was not ok");
+      const data = await response.json();
+      setDoctors(data);
+    } catch (error) {
+      console.log("Error fetching data: " + error);
+    }
+  };
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Register setDoctors={setDoctors} />} />
+        <Route path="/list" element={<List doctors={doctors} getDoctors={fetchDoctors}/>} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

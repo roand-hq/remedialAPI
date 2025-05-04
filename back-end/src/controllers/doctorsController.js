@@ -16,7 +16,7 @@ doctorsController.createDoctor = async(req,res) => {
 doctorsController.deleteDoctor = async(req,res) => {
     const {email} = req.body
     const deletedDoctor = await doctorsModel.findOneAndDelete({email})
-    res.json({message: "Doctor deleted successfully"})
+    if(deletedDoctor) res.json({message: "Doctor deleted successfully"})
 }
 doctorsController.updateDoctor = async(req,res) => {
     const {name, specialty,email,password,verified} = req.body;
