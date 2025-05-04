@@ -1,0 +1,80 @@
+body {
+    background-color: #f3e8ff;
+  }
+  
+  .centro {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+  }
+  
+  .newPassForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .newPassForm form {
+    background-color: #fff;
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .newPassForm input {
+    padding: 0.9rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    background-color: #fafafa;
+    transition: all 0.3s ease;
+  }
+  
+  .newPassForm input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background-color: #fff;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
+  
+  .newPassForm input::placeholder {
+    color: #9ca3af;
+  }
+  
+  .newPassForm button[type="submit"] {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0.9rem;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .newPassForm button[type="submit"]:hover {
+    background-color: #2563eb;
+  }
+  
+  .newPassForm button[type="button"] {
+    background-color: #6b7280;
+    color: white;
+    border: none;
+    padding: 0.9rem;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .newPassForm button[type="button"]:hover {
+    background-color: #4b5563;
+  }
+  

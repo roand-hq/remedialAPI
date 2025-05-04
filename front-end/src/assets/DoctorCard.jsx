@@ -16,13 +16,13 @@ const DoctorCard = ({ doctor, deleteDoctor, recoverPassword }) => {
         </p>
         <button
           className="btn btn-danger me-2"
-          onClick={() => deleteDoctor(doctor.email)}
+          onClick={deleteDoctor}
         >
           Eliminar
         </button>
         <button
           className="btn btn-primary"
-          onClick={() => recoverPassword(doctor)}
+          onClick={ recoverPassword}
         >
           Cambiar contraseña
         </button>

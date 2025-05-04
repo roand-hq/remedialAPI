@@ -10,7 +10,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:4000/zacamil/login", {
+      const response = await fetch("http://localhost:4000/zacamil/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -18,9 +18,9 @@ function Login() {
         body: JSON.stringify({ email, password })
       });
 
-      const data = await res.json();
+      const data = await response.json();
 
-      if (res.ok) {
+      if (response.ok) {
         alert("Inicio de sesión exitoso");
       } else {
         alert(data.message);

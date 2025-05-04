@@ -48,9 +48,10 @@ recoveryPasswordController.verifyCode = async (req, res) => {
       { expiresIn: "10m" }
     );
     res.cookie("tokenCodigoRecuperacion", newToken, { maxAge: 10 * 60 * 1000 });
-    res.json({ message: "Password recovery code verified successfully" });
+    res.json({ message: "Confirmacion de codigo exitosa" });
   } catch (error) {
-    console.log("Error al verificar token: " + error);
+    console.error("Error al verificar token:", error);
+    res.status(500).json({ message: "Internal server error during code verification" });
   }
 };
 
@@ -60,7 +61,7 @@ recoveryPasswordController.newPassword = async (req, res) => {
     const token = req.cookies.tokenCodigoRecuperacion;
     const decoded = jsonwebtoken.verify(token, config.JWT.secret);
     if (!decoded.verified)
-      return res.json({ message: "Code hasn't been verified" });
+      return res.status(400).json({ message: "Code hasn't been verified" });
     const { email } = decoded;
     const hashedPass = await bcrypt.hash(newPassword, 10);
     let updateUser;
@@ -70,7 +71,7 @@ recoveryPasswordController.newPassword = async (req, res) => {
       { new: true }
     );
     res.clearCookie("tokenCodigoRecuperacion");
-    res.json({ message: "Password has been changed successfully" });
+    res.status(200).json({ message: "Password has been changed successfully" });
   } catch (error) {
     console.log("El error cambiando la contraseña es: " + error);
   }

@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router";
 import { Register } from "./pages/Register";
 import { List } from "./pages/List";
 import { Login } from "./pages/Login";
+import { ChangePassword } from "./pages/ChangePassword";
 import "./App.css";
 import { useEffect, useState } from "react";
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register setDoctors={setDoctors} />} />
         <Route path="/list" element={<List doctors={doctors} getDoctors={fetchDoctors}/>} />
+        <Route path="/recoverPassword" element={<ChangePassword />}></Route>
       </Routes>
     </Router>
   );
