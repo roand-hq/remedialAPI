@@ -11,7 +11,7 @@ registerDoctorsController.register = async (req, res) => {
     const doctoreExists = await doctors.findOne({ email });
     if (doctoreExists)
       return res.status(400).json({
-        message: "There is already an existing doctor with this email",
+        message: "There is already an existing doctor with this email"
       });
     const encryptedPassword = await bcrypt.hash(password, 10);
     const newDoctor = new doctors({
